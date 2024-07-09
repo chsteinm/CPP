@@ -4,8 +4,20 @@
 #include "Contact.hpp"
 
 int main() {
-	Phonebook phonebook;
+	Phonebook	phonebook;
+	std::string	buf; 
 	
-	phonebook.displayColumns();
+	while (std::cin.eof() == false) {
+		std::cout << "Tape ADD / SEARCH / EXIT" << std::endl << "> ";
+		std::cin >> buf;
+		if (!buf.compare("ADD")) {
+			phonebook.addContact();
+		}
+		else if (!buf.compare("SEARCH")){
+			phonebook.displayColumns();
+		}
+		else if (!buf.compare("EXIT"))
+			return 0;
+	}
 	return 0;
 }

@@ -7,11 +7,13 @@ class Phonebook {
 
 private :
 	Contact contacts[8];
+	int		index_of_last_contacts_set;
 
 public :
 	Phonebook();
 	~Phonebook();
-	void displayColumns();
+	void displayColumns() const;
+	void addContact();
 };
 
 #endif

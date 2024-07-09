@@ -14,7 +14,9 @@ public :
 	Contact();
 	~Contact();
 	void setContact();
-	void displayContactColumns(int x);
+	void displayContactColumns(int x) const;
+	void displayContactInfos() const;
+	bool is_set;
 };
 
 #endif
