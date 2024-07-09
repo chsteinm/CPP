@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "Phonebook.hpp"
 
 Phonebook::Phonebook() {
@@ -26,13 +27,19 @@ void	Phonebook::displayColumns() const{
 		this->contacts[x].displayContactColumns(x);
 	}
 	std::cout << "Select index : " << std::endl << "> ";
-	std::cin >> i;
-	if (std::cin.fail())
-    	std::cout << "Error, please tape only a number" << std::endl;
-	else if (i < 1 || i > 8 || this->contacts[i - 1].is_set == false)
+	while (!(std::cin >> i)) {
+		if (std::cin.eof())
+			return ;
+		std::cout << "Error, please tape only a number" << std::endl << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+	if (i < 1 || i > 8 || this->contacts[i - 1].is_set == false)
 		std::cout << "Please select an existant index" << std::endl;
 	else
 		this->contacts[i - 1].displayContactInfos();
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void	Phonebook::addContact() {

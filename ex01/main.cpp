@@ -7,9 +7,9 @@ int main() {
 	Phonebook	phonebook;
 	std::string	buf; 
 	
-	while (std::cin.eof() == false) {
+	while (std::cin.eof() == 0) {
 		std::cout << "Tape ADD / SEARCH / EXIT" << std::endl << "> ";
-		std::cin >> buf;
+		std::getline(std::cin, buf);
 		if (!buf.compare("ADD")) {
 			phonebook.addContact();
 		}
@@ -18,6 +18,7 @@ int main() {
 		}
 		else if (!buf.compare("EXIT"))
 			return 0;
+		std::cout << std::endl;
 	}
 	return 0;
 }
