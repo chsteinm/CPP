@@ -2,13 +2,13 @@ NAME = megaphone
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 BUILD_DIR = .build
-SRC = megaphone.cpp
-OBJ = $(addprefix $(BUILD_DIR)/,$(SRC:.cpp=.o))
+SRCS = main.cpp
+OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $@
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $@
 	@echo "\nmegaphone is ready for use!\n"
 
 $(BUILD_DIR)/%.o: %.cpp Makefile

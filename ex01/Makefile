@@ -1,21 +1,21 @@
 NAME = phonebook
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+FLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 BUILD_DIR = .build
-SRC = phonebook.cpp contact.cpp main.cpp
-OBJ = $(addprefix $(BUILD_DIR)/,$(SRC:.cpp=.o))
+SRCS = Phonebook.cpp Contact.cpp main.cpp
+OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $@
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $@
 	@echo "\n$(NAME) is ready for use!\n"
 
 $(BUILD_DIR)/%.o: %.cpp Makefile
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
 
-include $(OBJS:.o=.d)
+-include $(OBJS:.o=.d)
 
 clean:
 	rm -rf $(BUILD_DIR)
