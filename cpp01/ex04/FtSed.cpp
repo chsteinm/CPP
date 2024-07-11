@@ -16,6 +16,26 @@ bool	FtSed::openFile(const char* filename) {
 bool	FtSed::createFileReplace(const char* filename) {
 	std::string filenameReplace = filename;
 	filenameReplace.append(".replace");
-	this->fileReplace.open(filenameReplace);
+	this->fileReplace.open(filenameReplace.c_str());
 	return (this->fileReplace.is_open());
+}
+
+void	FtSed::ftsed() {
+	std::string::size_type lenS1 = this->s1.size();
+	std::string::size_type lenS2 = this->s2.size();
+	std::string::size_type found;
+	std::string	line;
+
+	std::getline(this->file, line);
+	while (line.size()) {
+		found = 0;
+		found = line.find(this->s1);
+		while (found != std::string::npos) {
+			line.erase(found, lenS1);
+			line.insert(found, this->s2);
+			found = line.find(this->s1, found + lenS2);
+		}
+		this->fileReplace << line << std::endl;
+		std::getline(this->file, line);
+	}
 }
