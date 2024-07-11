@@ -13,8 +13,8 @@ public :
 	Zombie();
 	Zombie(std::string name);
 	~Zombie();
-	void	annonce();
-	Zombie*	zombieHorde(int N, std::string name);
+	void	annonce() const;
+	Zombie*	zombieHorde(int N, std::string name) const;
 };
 
 #endif

@@ -1,8 +1,8 @@
-NAME = HI_BRAIN
+NAME = ft_sed
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 #-g3
 BUILD_DIR = .build
-SRCS = main.cpp
+SRCS = FtSed.cpp main.cpp
 OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 all: $(NAME)
@@ -14,6 +14,8 @@ $(NAME): $(OBJS)
 $(BUILD_DIR)/%.o: %.cpp Makefile
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
+
+-include $(OBJS:.o=.d)
 
 clean:
 	rm -rf $(BUILD_DIR)

@@ -12,11 +12,11 @@ Zombie::~Zombie() {
 	std::cout << this->name << " sinks back to the ground" << std::endl;
 }
 
-void	Zombie::annonce() {
+void	Zombie::annonce() const {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie*	Zombie::zombieHorde(int N, std::string name) {
+Zombie*	Zombie::zombieHorde(int N, std::string name) const {
 	Zombie* zombieHorde = new Zombie[N];
 	for (int i = 0; i < N; i++)
 		zombieHorde[i].name = name;
