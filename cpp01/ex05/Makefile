@@ -2,10 +2,10 @@ NAME = Harl
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 #-g3
 BUILD_DIR = .build
-SRCS = FtSed.cpp main.cpp
+SRCS = Harl.cpp main.cpp
 OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
-all: $(NAME)
+all: $(NAME) .gitignore
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $@
@@ -27,3 +27,8 @@ re: fclean
 	@make --no-print-directory
 
 .PHONY: all clean fclean re
+
+.gitignore: Makefile
+	@echo '.build' > .gitignore
+	@echo '.vscode' >> .gitignore
+	@echo $(NAME) >> .gitignore
