@@ -8,10 +8,10 @@
 class FtSed {
 
 private :
-	std::ifstream	file;
-	std::ofstream	fileReplace;
-	std::string		s1;
-	std::string		s2;
+	std::ifstream	_file;
+	std::ofstream	_fileReplace;
+	std::string		_s1;
+	std::string		_s2;
 
 public :
 	FtSed(std::string s1, std::string s2);
