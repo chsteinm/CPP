@@ -12,7 +12,7 @@ private :
 	void	warning();
 	void	error();
 	void	(Harl::*_f[4])(void);
-	std::map<const std::string, int> _levelMap;
+	std::string _lvl[4];
 
 public :
 	Harl();

@@ -2,7 +2,6 @@
 #define HARL_HPP
 
 #include <iostream>
-#include <map>
 
 class Harl {
 
@@ -11,8 +10,8 @@ private :
 	void	info();
 	void	warning();
 	void	error();
-	void	(Harl::*f[4])(void);
-	std::map<const std::string, int> levelMap;
+	void	(Harl::*_f[4])(void);
+	std::string	_lvl[4];
 
 public :
 	Harl();

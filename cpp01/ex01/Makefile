@@ -2,7 +2,7 @@ NAME = Moar_brainz!
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 #-g3
 BUILD_DIR = .build
-SRCS = Zombie.cpp main.cpp
+SRCS = Zombie.cpp zombieHorde.cpp main.cpp
 OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.cpp=.o))
 
 all: $(NAME)

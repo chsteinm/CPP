@@ -15,10 +15,3 @@ Zombie::~Zombie() {
 void	Zombie::annonce() const {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
-
-Zombie*	Zombie::zombieHorde(int N, std::string name) const {
-	Zombie* zombieHorde = new Zombie[N];
-	for (int i = 0; i < N; i++)
-		zombieHorde[i]._name = name;
-	return zombieHorde;
-}

@@ -2,14 +2,14 @@
 
 Harl::Harl() {
 	std::cout << "Constuctor called" << std::endl;
-	this->_levelMap["DEBUG"] = 0;
-    this->_levelMap["INFO"] = 1;
-    this->_levelMap["WARNING"] = 2;
-    this->_levelMap["ERROR"] = 3;
 	this->_f[0] = &Harl::debug;
 	this->_f[1] = &Harl::info;
 	this->_f[2] = &Harl::warning;
 	this->_f[3] = &Harl::error;
+	this->_lvl[0] = "DEBUG";
+	this->_lvl[1] = "INFO";
+	this->_lvl[2] = "WARNING";
+	this->_lvl[3] = "ERROR";
 }
 
 Harl::~Harl() {
@@ -33,9 +33,10 @@ void	Harl::error() {
 }
 
 void	Harl::complain(std::string complain) {
-	int	lvl = this->_levelMap[complain];
-	if (lvl == 0 && complain != "DEBUG")
-		lvl = -1;
+	int	lvl = -1;
+	while (++lvl < 4)
+		if (complain == this->_lvl[lvl])
+			break ;
 	switch (lvl) {
 		case 0:
 			std::cout << "[ DEBUG ]" << std::endl;
