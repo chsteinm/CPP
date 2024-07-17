@@ -6,16 +6,16 @@ int main() {
 
 		HumanA sarko("Sarko", frenchInsult);
 		sarko.attack();
-		frenchInsult.setType("\"Grande Perch va !\"");
+		frenchInsult.setType("\"Quelle indignite !\"");
 		sarko.attack();
 	}
 	{
-		Weapon frenchInsult = Weapon("\"T'es trop petit je t'entends pas !\"");
+		Weapon frenchInsult = Weapon("\"Abrutis, menteur !\"");
 
-		HumanB someone("Someone");
+		HumanB someone("Meluch");
 		someone.setWeapon(frenchInsult);
 		someone.attack();
-		frenchInsult.setType("\"Jolie bracelet au pied en passant !\"");
+		frenchInsult.setType("\"Fromages lyophilisés !\"");
 		someone.attack();
 	}
 

@@ -5,7 +5,7 @@ HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) 
 }
 
 HumanA::~HumanA() {
-	std::cout << this->_name << " kill itself" << std::endl;
+	std::cout << this->_name << " is incarcerated" << std::endl;
 }
 
 void			HumanA::attack() {

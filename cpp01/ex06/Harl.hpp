@@ -11,8 +11,8 @@ private :
 	void	info();
 	void	warning();
 	void	error();
-	void	(Harl::*f[4])(void);
-	std::map<const std::string, int> levelMap;
+	void	(Harl::*_f[4])(void);
+	std::map<const std::string, int> _levelMap;
 
 public :
 	Harl();

@@ -8,7 +8,7 @@ Weapon::~Weapon() {
 	std::cout << "the french insult is destructed" << std::endl;
 }
 
-std::string&	Weapon::getType() {
+const std::string&	Weapon::getType() {
 	return this->_type;
 }
 
