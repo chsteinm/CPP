@@ -16,10 +16,10 @@ private :
 public :
 	FtSed(std::string s1, std::string s2);
 	~FtSed();
-	void	setS1AndS2(std::string& s1, std::string& s2);
 	bool	openFile(const char* filename);
 	bool	createFileReplace(const char* filename);
 	void	ftsed();
+	void	closeFiles();
 };
 
 #endif

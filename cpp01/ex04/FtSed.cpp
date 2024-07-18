@@ -26,8 +26,7 @@ void	FtSed::ftsed() {
 	std::string::size_type found;
 	std::string	line;
 
-	std::getline(this->_file, line);
-	while (line.size()) {
+	while (std::getline(this->_file, line)) {
 		found = 0;
 		found = line.find(this->_s1);
 		while (found != std::string::npos) {
@@ -36,6 +35,10 @@ void	FtSed::ftsed() {
 			found = line.find(this->_s1, found + lenS2);
 		}
 		this->_fileReplace << line << std::endl;
-		std::getline(this->_file, line);
 	}
+}
+
+void	FtSed::closeFiles() {
+	this->_file.close();
+	this->_fileReplace.close();
 }
