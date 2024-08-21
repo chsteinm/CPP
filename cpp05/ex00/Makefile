@@ -1,8 +1,8 @@
-NAME = Abstract!
+NAME = Mommy
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
 BUILD_DIR = .build
-SRCS = Animal Dog Cat WrongAnimal WrongCat Brain main
+SRCS = main Bureaucrat
 CPPFILES = $(addsuffix .cpp, $(SRCS))
 OBJS = $(addprefix $(BUILD_DIR)/,$(CPPFILES:.cpp=.o))
 
@@ -17,6 +17,19 @@ $(BUILD_DIR)/%.o: %.cpp Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 -include $(OBJS:.o=.d)
+
+%.cpp: %.hpp
+	@echo '#include "$*.hpp"' > $@
+
+%hpp:
+	@UP=$(shell echo $* | tr a-z A-Z | sed 's/\.//'); \
+	echo "# ifndef $${UP}_HPP" > $@; \
+	echo "#define $${UP}_HPP" >> $@; \
+	echo >> $@; \
+	echo "#include <iostream>" >> $@; \
+	echo >> $@; \
+	echo "classe $* {" >> $@; \
+	echo "#endif" >> $@;
 
 clean:
 	rm -rf $(BUILD_DIR)
