@@ -28,7 +28,7 @@ $(BUILD_DIR)/%.o: %.cpp Makefile
 	echo >> $@; \
 	echo "#include <iostream>" >> $@; \
 	echo >> $@; \
-	echo "classe $* {" >> $@; \
+	echo "class $* {" >> $@; \
 	echo "#endif" >> $@;
 
 clean:
