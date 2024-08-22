@@ -2,7 +2,7 @@ NAME = Mommy
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
 BUILD_DIR = .build
-SRCS = main Bureaucrat
+SRCS = main Bureaucrat Form
 CPPFILES = $(addsuffix .cpp, $(SRCS))
 OBJS = $(addprefix $(BUILD_DIR)/,$(CPPFILES:.cpp=.o))
 
@@ -17,19 +17,6 @@ $(BUILD_DIR)/%.o: %.cpp Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
 -include $(OBJS:.o=.d)
-
-# %.cpp: %.hpp
-# 	@echo '#include "$*.hpp"' > $@
-
-# %hpp:
-# 	@UP=$(shell echo $* | tr a-z A-Z | sed 's/\.//'); \
-# 	echo "# ifndef $${UP}_HPP" > $@; \
-# 	echo "#define $${UP}_HPP" >> $@; \
-# 	echo >> $@; \
-# 	echo "#include <iostream>" >> $@; \
-# 	echo >> $@; \
-# 	echo "class $* {" >> $@; \
-# 	echo "#endif" >> $@;
 
 clean:
 	rm -rf $(BUILD_DIR)
