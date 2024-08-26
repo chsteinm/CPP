@@ -31,9 +31,9 @@ std::ostream& operator<<(std::ostream& o, const Form& src) {
 Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec) {
 	std::cout << "Parametric Form constuctor called" << std::endl;
 	this->_signed = false;
-	if (this->_gradeToSign < 1)
+	if (this->_gradeToSign < 1 || this->_gradeToExec < 1)
 		throw Form::GradeTooHighException();
-	if (this->_gradeToSign > 150)
+	if (this->_gradeToSign > 150 || this->_gradeToExec > 150)
 		throw Form::GradeTooLowException();
 }
 
