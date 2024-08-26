@@ -1,1 +1,1 @@
-.build/Bureaucrat.o: Bureaucrat.cpp Bureaucrat.hpp
+.build/Bureaucrat.o: Bureaucrat.cpp Bureaucrat.hpp Form.hpp

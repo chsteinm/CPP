@@ -3,12 +3,17 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
 
 protected :
-	std::string const	_name;
-	int					_grade;
+	const std::string	_name;
+	bool				_signed;
+	const int			_gradeToSign;
+	const int			_gradeToExec;
 
 public :
 	Form();
@@ -16,23 +21,22 @@ public :
 	~Form();
 	Form&	operator=(const Form& src);
 	
-	Form(std::string name, int grade);
+	Form(std::string name, int gradeToSign, int gradeToExec);
 
 	std::string const	getName() const;
-	int					getGrade() const;
+	int					getGradeToSign() const;
+	int					getGradeToExec() const;
+	void				beSigned(const Bureaucrat& bureaucrat);
+	bool				isSigned() const;
 
 	class	GradeTooHighException : public std::exception {
 		public :
-			virtual const char* what() const throw() {
-				return "Grade too high (ʘ‿ʘ)╯";
-			}
+			virtual const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception {
 		public :
-			virtual const char* what() const throw() {
-				return "Grade too low ¯\\_( ͡° ͜ʖ ͡°)_/¯";
-			}
+			virtual const char* what() const throw();
 	};
 };
 

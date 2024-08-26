@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -22,19 +25,16 @@ public :
 	int					getGrade() const;
 	void				incrementGrade();
 	void				decrementGrade();
+	void				signForm(Form& form);
 
 	class	GradeTooHighException : public std::exception {
 		public :
-			virtual const char* what() const throw() {
-				return "Grade too high (ʘ‿ʘ)╯";
-			}
+			virtual const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception {
 		public :
-			virtual const char* what() const throw() {
-				return "Grade too low ¯\\_( ͡° ͜ʖ ͡°)_/¯";
-			}
+			virtual const char* what() const throw();
 	};
 };
 

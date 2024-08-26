@@ -51,3 +51,11 @@ void	Bureaucrat::decrementGrade() {
 	if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
+
+const char*	Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade too low ¯\\_( ͡° ͜ʖ ͡°)_/¯";
+}
+
+const char*	Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade too high (ʘ‿ʘ)╯";
+}

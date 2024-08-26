@@ -1,4 +1,4 @@
-NAME = Mommy
+NAME = maggots!
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
 BUILD_DIR = .build

@@ -1,11 +1,13 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main() {
 	{
+		Form f("Dissolution", 50, 2);
 		Bureaucrat a("Jean", 150);
 		try {
 			std::cout << a << std::endl;
-			a.decrementGrade();
+			a.signForm(f);
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
@@ -13,10 +15,13 @@ int	main() {
 	}
 	std::cout << std::endl;
 	{
+		Form f("Dissolution", 50, 2);
 		Bureaucrat b("Henri", 1);
 		try {
+			std::cout << f << std::endl;
 			std::cout << b << std::endl;
-			b.incrementGrade();
+			b.signForm(f);
+			std::cout << f << std::endl;
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
