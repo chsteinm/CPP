@@ -57,12 +57,18 @@ const char*	Form::GradeTooHighException::what() const throw() {
 	return "Grade too high (ʘ‿ʘ)╯";
 }
 
-void	Form::beSigned(const Bureaucrat& bureaucrat) {
-	if (bureaucrat.getGrade() > this->_gradeToSign)
-		throw Form::GradeTooLowException();
-	this->_signed = true;
+const char*	Form::FormAlreadySignedException::what() const throw() {
+	return "Form is already signed ¯\\_(O‿o)╯";
 }
 
 bool	Form::isSigned() const {
 	return this->_signed;
+}
+
+void	Form::beSigned(const Bureaucrat& bureaucrat) {
+	if (bureaucrat.getGrade() > this->_gradeToSign)
+		throw Form::GradeTooLowException();
+	else if (this->_signed == true)
+		throw Form::FormAlreadySignedException();
+	this->_signed = true;
 }

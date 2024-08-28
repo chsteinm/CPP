@@ -16,12 +16,13 @@ int	main() {
 	std::cout << std::endl;
 	{
 		Form f("Dissolution", 50, 2);
-		Bureaucrat b("Henri", 1);
+		Bureaucrat b("Manu", 1);
 		try {
 			std::cout << f << std::endl;
 			std::cout << b << std::endl;
 			b.signForm(f);
 			std::cout << f << std::endl;
+			b.signForm(f);
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
