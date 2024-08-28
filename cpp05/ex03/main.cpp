@@ -13,5 +13,7 @@ int	main() {
 	god.signForm(*r);
 	god.executeForm(*r);
 	delete r;
+	r = i.makeForm("RoboomyRequestForm", "Population");
+	delete r;
 	return 0;
 }
