@@ -61,8 +61,14 @@ void	convertInt(long int& value) {
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(intValue) << std::endl;
-	std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
+	if (value <= -1000000 || value >= 1000000) {
+		std::cout << "float: " << static_cast<float>(intValue) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(intValue) << std::endl;
+	}
+	else {
+		std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
+	}
 }
 
 bool	isFloat(std::string& literal, float& value) {
@@ -70,9 +76,19 @@ bool	isFloat(std::string& literal, float& value) {
 		return false;
 	literal.erase(literal.size() - 1);
 	std::istringstream	iss(literal);
-	iss >> value;
-	if (value == std::numeric_limits<float>::infinity() || value == -std::numeric_limits<float>::infinity())
-		std::cout << value << "hoooo" << std::endl;
+	double	dValue;
+	iss >> dValue;
+	if (!iss.fail() && iss.eof()) {
+		if (dValue > std::numeric_limits<float>::max()) {
+			value = std::numeric_limits<float>::infinity();
+			return true;
+		}
+		else if (dValue < -340282346638528859811704183484516925440.0000000000000000) {
+			value = -std::numeric_limits<float>::infinity();
+			return true;
+		}
+	}
+	value = static_cast<float>(dValue);
 	return !iss.fail() && iss.eof();
 }
 
@@ -86,7 +102,7 @@ void	convertFloat(float& value) {
 	else
 		std::cout << "int: " << static_cast<int>(value) << std::endl;
 	bool	hasDecimalPart = std::fmod(value, 1.0f) != 0.0f;
-	if (hasDecimalPart == true) {
+	if (hasDecimalPart == true || value <= -1000000 || value >= 1000000) {
 		std::cout << "float: " << value << "f" << std::endl;
 		std::cout << "double: " << static_cast<double>(value) << std::endl;
 	}
@@ -96,9 +112,44 @@ void	convertFloat(float& value) {
 	}
 }
 
+bool	isDouble(std::string& literal, double& dValue) {
+	std::istringstream	iss(literal);
+	iss >> dValue;
+	return !iss.fail() && iss.eof();
+}
+
+void	convertDouble(double& value) {
+	if (value < 127 && value > 31)
+		std::cout << "char: " << static_cast<char>(value) << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+		std::cout << "int: overflow" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(value) << std::endl;
+	bool	hasDecimalPart = std::fmod(static_cast<float>(value), 1.0f) != 0.0f;
+	if (hasDecimalPart == true || value <= -1000000 || value >= 1000000) {
+		std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+		std::cout << "double: " << value << std::endl;
+	}
+	else {
+		std::cout << "float: " << static_cast<float>(value) << ".0f" << std::endl;
+		std::cout << "double: " << value << ".0" << std::endl;
+	}
+}
+
+void	convertNan() {
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << "nanf" << std::endl;
+	std::cout << "double: " << "nan" << std::endl;
+}
+
 void	ScalarConverter::convert(std::string literal) {
 	long int	intValue;
 	float		floatValue;
+	double		doubleValue;
+
 	if (isInf(literal))
 		return convertInf(literal[0]);
 	if (isChar(literal))
@@ -107,4 +158,9 @@ void	ScalarConverter::convert(std::string literal) {
 		return convertInt(intValue);
 	if (isFloat(literal, floatValue))
 		return convertFloat(floatValue);
+	if (isDouble(literal, doubleValue))
+		return convertDouble(doubleValue);
+	if (literal == "nan" || literal == "nanf")
+		return convertNan();
+	std::cout << "Conversions are impossible." << std::endl;
 }
