@@ -27,13 +27,10 @@ Base*	Base::generate() {
 	int randomValue = std::rand() % 3;
     switch (randomValue) {
         case 0:
-			std::cout << "A created\n";
             return new A();
         case 1:
-			std::cout << "B created\n";
             return new B();
         case 2:
-			std::cout << "C created\n";
             return new C();
         default:
             return NULL;
@@ -56,25 +53,26 @@ if (c){
 	std::cout << "The actual type of the object pointed to by p is : C" << std::endl;
 	return ;
 }
+std::cout << "Unknown instance" << std::endl;
 }
 
 void	Base::identify(Base& p) {
 	 try {
         A& a = dynamic_cast<A&>(p);
 		(void)a;
-        std::cout << "Instance of A\n";
+        std::cout << "The actual type of the object pointed to by p is : A" << std::endl;
     } catch (...) {
         try {
             B& b = dynamic_cast<B&>(p);
 			(void)b;
-            std::cout << "Instance of B\n";
+            std::cout << "The actual type of the object pointed to by p is : B" << std::endl;
         } catch (...) {
             try {
                 C& c = dynamic_cast<C&>(p);
 				(void)c;
-                std::cout << "Instance of C\n";
+                std::cout << "The actual type of the object pointed to by p is : C" << std::endl;
             } catch (...) {
-                std::cout << "Unknown instance\n";
+                std::cout << "Unknown instance" << std::endl;
             }
         }
     }

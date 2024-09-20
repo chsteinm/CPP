@@ -5,5 +5,7 @@ int	main(int argc, char **argv) {
 	if (argc == 2) {
 		ScalarConverter::convert(argv[1]);
 	}
+	else
+		std::cout << "Please enter a parameter like \"./convert 42\"" << std::endl;
 	return 0;
 }
