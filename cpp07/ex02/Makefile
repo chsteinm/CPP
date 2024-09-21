@@ -2,7 +2,7 @@ NAME = Array
 CC = c++
 FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
 BUILD_DIR = .build
-SRCS = main 
+SRCS = main Array
 CPPFILES = $(addsuffix .cpp, $(SRCS))
 OBJS = $(addprefix $(BUILD_DIR)/,$(CPPFILES:.cpp=.o))
 

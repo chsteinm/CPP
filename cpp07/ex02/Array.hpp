@@ -6,6 +6,8 @@
 template<typename T>
 class Array {
 private :
+	T*				_array;
+	unsigned int	_size;
 
 public :
 	Array();
@@ -14,7 +16,7 @@ public :
 	~Array();
 	Array&	operator=(const Array& src);
 
-	static void	convert(std::string literal);
+	unsigned int	size();
 };
 
 #endif

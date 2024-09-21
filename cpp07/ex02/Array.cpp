@@ -1,33 +1,36 @@
 #include "Array.hpp"
 
-Array::Array() {
+template <typename T>
+Array<T>::Array() : array(nullptr) {
 	std::cout << "Default Array constuctor called" << std::endl;
-	this->_type = "defaultType";
 }
 
-Array::Array(const Array& src) {
+template <typename T>
+Array<T>::Array(const Array& src) {
 	std::cout << "Copy Array constuctor called" << std::endl;
 	*this = src;
 }
 
-Array::Array(std::string type) : _type(type) {
+template <typename T>
+Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {
 	std::cout << "Parametric Array constuctor called" << std::endl;
 }
 
-Array::~Array() {
+template <typename T>
+Array<T>::~Array() {
+	if (this->array)
+		delete[] this->array;
 	std::cout << "Array destructor called" << std::endl;
 }
 
-Array&	Array::operator=(const Array& src) {
+template <typename T>
+Array<T>&	Array<T>::operator=(const Array& src) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_type = src._type;
 	return *this;
 }
 
-void	Array::makeSound() const {
-	std::cout << "Prout" << std::endl;
-}
+template <typename T>
+unsigned int	Array<T>::size() {
 
-std::string	Array::getType() const {
-	return this->_type;
 }

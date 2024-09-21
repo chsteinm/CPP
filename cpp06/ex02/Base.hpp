@@ -8,14 +8,7 @@
 
 class Base {
 public :
-	Base();
-	Base(const Base& src);
-	virtual ~Base();
-	Base&	operator=(const Base& src);
-
-	static Base*	generate();
-	void	identify(Base* p);
-	void	identify(Base& p);
+	virtual ~Base() = 0;
 };
 
 #endif
