@@ -19,7 +19,12 @@ public :
 
 	T&	operator[](int n);
 
-	unsigned int	size();
+	unsigned int	size() const;
+
+	class	OutOfBounds : public std::exception {
+		public :
+			virtual const char* what() const throw();
+	};
 };
 
 #endif

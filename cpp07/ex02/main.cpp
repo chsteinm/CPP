@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Array.hpp"
+#include "Array.cpp"
 #include <cstdlib>
 #include <ctime>
 
