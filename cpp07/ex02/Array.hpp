@@ -2,6 +2,7 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <exception>
 
 template<typename T>
 class Array {
@@ -15,6 +16,8 @@ public :
 	Array(const Array& src);
 	~Array();
 	Array&	operator=(const Array& src);
+
+	T&	operator[](int n);
 
 	unsigned int	size();
 };

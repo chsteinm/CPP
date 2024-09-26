@@ -41,17 +41,17 @@ void	identify(Base& p) {
 	 try {
         A& a = dynamic_cast<A&>(p);
 		(void)a;
-        std::cout << "The actual type of the object pointed to by p is : A" << std::endl;
+        std::cout << "The actual type of the object p is : A" << std::endl;
     } catch (...) {
         try {
             B& b = dynamic_cast<B&>(p);
 			(void)b;
-            std::cout << "The actual type of the object pointed to by p is : B" << std::endl;
+            std::cout << "The actual type of the object p is : B" << std::endl;
         } catch (...) {
             try {
                 C& c = dynamic_cast<C&>(p);
 				(void)c;
-                std::cout << "The actual type of the object pointed to by p is : C" << std::endl;
+                std::cout << "The actual type of the object p is : C" << std::endl;
             } catch (...) {
                 std::cout << "Unknown instance" << std::endl;
             }
