@@ -18,6 +18,7 @@ public :
 	Array&	operator=(const Array& src);
 
 	T&	operator[](int n);
+	const T&	operator[](int n) const;
 
 	unsigned int	size() const;
 

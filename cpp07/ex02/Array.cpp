@@ -38,8 +38,14 @@ Array<T>&	Array<T>::operator=(const Array& src) {
 }
 
 template <typename T>
-T&	Array<T>::operator[](int n)
-{
+T&	Array<T>::operator[](int n) {
+	if (n < 0 || n >= static_cast<int>(this->_size))
+		throw(Array::OutOfBounds());
+	return (this->_array[n]);
+}
+
+template <typename T>
+const T&	Array<T>::operator[](int n) const {
 	if (n < 0 || n >= static_cast<int>(this->_size))
 		throw(Array::OutOfBounds());
 	return (this->_array[n]);
