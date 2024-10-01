@@ -1,14 +1,14 @@
-#include "easyfind.hpp"
+#include "easyFind.hpp"
 
 int main() {
-    std::vector<int> numbers;
-    numbers.push_back(3);
-    numbers.push_back(1);
-    numbers.push_back(5);
-    numbers.push_back(2);
-    numbers.push_back(8);
-    numbers.push_back(-12);
-    numbers.push_back(0);
+	std::vector<int> numbers;
+	numbers.push_back(3);
+	numbers.push_back(1);
+	numbers.push_back(5);
+	numbers.push_back(2);
+	numbers.push_back(8);
+	numbers.push_back(-12);
+	numbers.push_back(0);
 	int	n;
 	std::cout << "Enter a number : " << std::endl << "> ";
 	while (!(std::cin >> n)) {
@@ -19,7 +19,7 @@ int main() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
-    std::vector<int>::iterator it = ::easyfind(numbers, n);
+    std::vector<int>::iterator it = ::easyFind(numbers, n);
 	if (it == numbers.end())
 		std::cout << "No occurence found" << std::endl;
 	else

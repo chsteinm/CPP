@@ -7,7 +7,7 @@
 #include <limits>
 
 template<typename T>
-std::vector<int>::iterator	easyfind(T& a, int n) {
+std::vector<int>::iterator	easyFind(T& a, int n) {
 	return std::find(a.begin(), a.end(), n);
 }
 

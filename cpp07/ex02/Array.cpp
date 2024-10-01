@@ -21,6 +21,7 @@ Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {
 template <typename T>
 Array<T>::~Array() {
 	delete[] this->_array;
+	this->_array = 0;
 	std::cout << "Array destructor called" << std::endl;
 }
 
