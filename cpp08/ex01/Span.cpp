@@ -6,8 +6,7 @@ Span::Span() : _max(10000) {
 
 Span::Span(const Span& src) {
 	std::cout << "Copy Span constuctor called" << std::endl;
-	this->_max = src.getMax();
-	this->_numbers = src.getVector();
+	*this = src;
 }
 
 Span::~Span() {
@@ -60,7 +59,6 @@ int	randomNumber() {
 }
 
 void	Span::addMaxNumbers() {
-	srand(time(NULL));
 	std::vector<int>randomNumbers(this->_max - this->_numbers.size());
 	std::generate(randomNumbers.begin(), randomNumbers.end(), randomNumber);
 	this->_numbers.insert(this->_numbers.end(), randomNumbers.begin(), randomNumbers.end());
