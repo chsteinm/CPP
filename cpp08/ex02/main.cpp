@@ -74,9 +74,8 @@ int main(int, char**)
     }
     numbers.~Array();
     int index = rand() % MAX_VAL;
-    index > 0 ? index-- : NULL;
     std::cout << "value of constNumbers index " << index << " is = " << constNumbers[index] << std::endl;
     std::cout << "value of constNumbers2 index " << index << " is = " << constNumbers2[index] << std::endl;
-    // constNumbers[index] = 42; //not possible
+    // constNumbers[index] = 42;
     return 0;
 }
