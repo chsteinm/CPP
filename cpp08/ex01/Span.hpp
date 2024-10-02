@@ -22,11 +22,24 @@ public :
 	~Span();
 	Span&	operator=(const Span& src);
 
-	unsigned int	getMax() const;
-	void			addNumber(const int n);
-	void			addMaxNumbers();
+	int&	operator[](int n);
+
+	unsigned int		getMax() const;
+	std::vector<int>	getVector() const;
+	int					getSize() const;
+	
+	void				addNumber(const int n);
+	void				addMaxNumbers();
+	
+	int	shortestSpan() const;
+	int	longestSpan() const;
 
 	class	MaxNumbersReach : public std::exception {
+		public :
+			virtual const char* what() const throw();
+	};
+
+	class	LessThanTwoNumbers : public std::exception {
 		public :
 			virtual const char* what() const throw();
 	};
