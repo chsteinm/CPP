@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <list>
 
 template<typename T>
 class MutantStack : public std::stack<T> {
@@ -18,9 +19,12 @@ public :
 
 	std::vector<T>	getVector() const;
 
-	std::vector<T>::iterator	begin();
-	std::vector<T>::iterator	end();
-	
+	typedef typename std::vector<T>::iterator iterator;
+	iterator	begin();
+	iterator	end();
+
+	void	push(const T& value);
+	void	pop();
 };
 
 #endif
