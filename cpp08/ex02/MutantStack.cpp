@@ -19,11 +19,13 @@ MutantStack<T>::~MutantStack() {
 template <typename T>
 MutantStack<T>&	MutantStack<T>::operator=(const MutantStack& src) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	while (this->empty())
-		this->pop();
-	this->_vec = src.getVector();
-	for (iterator it = this->_vec.begin(); it != this->_vec.end(); it++)
-		this->push(*it);
+	if (this != &src) {
+		while (this->empty())
+			this->pop();
+		this->_vec = src.getVector();
+		for (iterator it = this->_vec.begin(); it != this->_vec.end(); it++)
+			this->push(*it);
+	}
 	return *this;
 }
 
