@@ -64,12 +64,13 @@ Fixed	Fixed::operator*(const Fixed& src) const {
 }
 
 Fixed	Fixed::operator/(const Fixed& src) const {
+	if (src.toFloat() == 0)
+        return Fixed(std::numeric_limits<float>::quiet_NaN());
 	return Fixed(this->toFloat() / src.toFloat());
 }
 
 Fixed&	Fixed::operator++() {
-	this->_fixe++;
-	return *this;
+	return ++this->_fixe, *this;
 }
 
 Fixed	Fixed::operator++(int) {
@@ -79,8 +80,7 @@ Fixed	Fixed::operator++(int) {
 }
 
 Fixed&	Fixed::operator--() {
-	this->_fixe--;
-	return *this;
+	return this->_fixe--, *this;
 }
 
 Fixed	Fixed::operator--(int) {
