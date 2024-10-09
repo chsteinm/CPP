@@ -44,9 +44,5 @@ a = a - b;
 std::cout << "a = a - b = " << a << std::endl;
 a = a / b;
 std::cout << "a = a / b = " << a << std::endl;
-a = 0;
-std::cout << "aBig = " << aBig << " and a = " << a << std::endl;
-aBig = aBig / a;
-std::cout << "aBig = aBig / a = " << a << std::endl;
 return 0;
 }
