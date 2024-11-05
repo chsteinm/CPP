@@ -1,11 +1,20 @@
 #include "BitcoinExchange.hpp"
 
+int err(std::string error) {
+    std::cerr << error << std::endl;
+    return 1;
+}
+
 int main(int ac, char **av) {
     (void)av;
     std::ifstream   data("data.csv");
     if (ac != 2 || !data)
-        return 1;
+        return err("Error: could not open file.");
+    std::ifstream input(av[1]);
+    if (!input)
+        return err("Error: could not open file.");
     BitcoinExchange btc;
     btc.parseData(data);
+    // std::cout << btc.getChange("2011-93-11") << std::endl;
     return 0;
 }

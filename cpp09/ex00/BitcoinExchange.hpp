@@ -10,6 +10,7 @@
 class BitcoinExchange {
 private :
 	std::map<std::string, double> _change;
+	std::ifstream   _input;
 
 public :
 	BitcoinExchange();

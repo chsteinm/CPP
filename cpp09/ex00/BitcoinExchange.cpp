@@ -21,11 +21,19 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& src) {
 
 void	BitcoinExchange::parseData(std::ifstream& data) {
 	std::string	line;
-	
+	while (std::getline(data, line)) {
+		std::istringstream ss(line);
+		std::string date;
+		double exchangeRate;
+
+		std::getline(ss, date, ',');
+		ss >> exchangeRate;
+		this->_change[date] = exchangeRate;
+	}
 }
 
 double	BitcoinExchange::getChange(std::string date) {
-	//
-	double ret = this->_change[date];
+	double ret;
+	
 	return ret;
 }
