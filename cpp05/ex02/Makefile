@@ -20,6 +20,7 @@ $(BUILD_DIR)/%.o: %.cpp Makefile
 
 clean:
 	rm -rf $(BUILD_DIR)
+	rm *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)

@@ -5,7 +5,7 @@ int	main() {
 	Data	data;
 	Data*	ptr = &data;
 	data.n = 42;
-	data.c = '*';
+	data.c = 'b';
 
 	std::cout << "data.n = " << data.n << std::endl;
 	std::cout << "data.c = " << data.c << std::endl << std::endl;

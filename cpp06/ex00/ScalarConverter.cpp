@@ -36,7 +36,7 @@ bool	isChar(std::string& literal) {
 
 void	convertChar(char c) {
 	if (std::isprint(c))
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char: '" << c << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
@@ -57,7 +57,7 @@ void	convertInt(long int& value) {
 	}
 	int	intValue = static_cast<int>(value);
 	if (intValue < 127 && intValue > 31)
-		std::cout << "char: " << static_cast<char>(intValue) << std::endl;
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(intValue) << std::endl;
@@ -94,7 +94,7 @@ bool	isFloat(std::string& literal, float& value) {
 
 void	convertFloat(float& value) {
 	if (value < 127 && value > 31)
-		std::cout << "char: " << static_cast<char>(value) << std::endl;
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
@@ -120,7 +120,7 @@ bool	isDouble(std::string& literal, double& dValue) {
 
 void	convertDouble(double& value) {
 	if (value < 127 && value > 31)
-		std::cout << "char: " << static_cast<char>(value) << std::endl;
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	if (value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())

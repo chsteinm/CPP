@@ -22,5 +22,17 @@ int	main() {
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << std::endl;
+	{
+		Bureaucrat c("Artur", 2);
+		try {
+			std::cout << c << std::endl;
+			c.incrementGrade();
+			std::cout << c << std::endl;
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 	return 0;
 }

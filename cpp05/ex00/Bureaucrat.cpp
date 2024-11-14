@@ -41,14 +41,12 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& src) {
 }
 
 void	Bureaucrat::incrementGrade() {
-	this->_grade--;
-	if (this->_grade < 1)
+	if (--this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 }
 
 void	Bureaucrat::decrementGrade() {
-	this->_grade++;
-	if (this->_grade > 150)
+	if (++this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 }
 
