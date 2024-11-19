@@ -10,7 +10,6 @@
 class BitcoinExchange {
 private :
 	std::map<std::string, double> _change;
-	std::ifstream   _input;
 
 public :
 	BitcoinExchange();
@@ -19,7 +18,7 @@ public :
 	BitcoinExchange&	operator=(const BitcoinExchange& src);
 
 	void	parseData(std::ifstream& data);
-	double	getChange(std::string date);
+	void	getChange(std::ifstream& input);
 };
 
 #endif

@@ -15,6 +15,6 @@ int main(int ac, char **av) {
         return err("Error: could not open file.");
     BitcoinExchange btc;
     btc.parseData(data);
-    // std::cout << btc.getChange("2011-93-11") << std::endl;
+    btc.getChange(input);
     return 0;
 }
