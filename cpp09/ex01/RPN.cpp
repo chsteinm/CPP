@@ -29,30 +29,35 @@ int	RPN::calculator(char *args) {
 	std::istringstream iss(args);
 	int n;
 	char op;
+	char c;
 
-	while (!iss.fail() && iss >> std::ws) {
-		if (iss >> n) {
-			this->_stack.push(n);
+	while (iss >> std::skipws >> c) {
+		if (c >= '0' && c <= '9') {
+			this->_stack.push(c - 48);
 		}
-		else if (iss >> op) {
-			if (this->_stack.size() != 2)
-				return error("Error: number(s)");
+		else {
+			if (this->_stack.size() < 2)
+				return error("Error: n");
 			int b = this->_stack.top();
-			std::cout << b << ' ';
 			this->_stack.pop();
 			int a = this->_stack.top();
-			std::cout << a << '\n';
 			this->_stack.pop();
 			
-			switch (op) {
+			switch (c) {
 				case '+': this->_stack.push(a + b); break;
                 case '-': this->_stack.push(a - b); break;
                 case '*': this->_stack.push(a * b); break;
-                case '/': this->_stack.push(a / b); break;
+                case '/': if (!b)
+							return error("Error: division by zero impossible");
+						  this->_stack.push(a / b); break;
                 default: return error("Error: op");
             }
 		}
 	}
-	std::cout << this->_stack.top() << std::endl;
+	
+	if (this->_stack.size())
+		std::cout << this->_stack.top() << std::endl;
+	else
+		return error("Error");
 	return 0;
 }
