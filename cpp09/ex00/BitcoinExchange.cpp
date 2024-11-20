@@ -43,8 +43,9 @@ bool isValidDate(const std::string& date) {
 
 void	BitcoinExchange::parseData(std::ifstream& data) {
 	std::string	line;
-	std::getline(data, line);
 	while (std::getline(data, line)) {
+		if (line == "date,exchange_rate")
+			continue;
 		std::istringstream ss(line);
 		std::string date;
 		double exchangeRate;
@@ -52,7 +53,7 @@ void	BitcoinExchange::parseData(std::ifstream& data) {
 		std::getline(ss, date, ',');
 		if (isValidDate(date)) {
 			ss >> exchangeRate;
-			if (!ss.fail())
+			if (!ss.fail() || ss.eof())
 				this->_change[date] = exchangeRate;
 			else
 				std::cerr << "data.csv : error in exchange_rate on the line : " << line << std::endl;
@@ -68,7 +69,7 @@ bool	isValidValue(double& value) {
 		std::cerr << "Error: too large number." << std::endl;
 	else if (value < 0)
 		std::cerr << "Error: not a positive number." << std::endl;
-	return (value >= 0 && value <= 1000);
+	return value >= 0 && value <= 1000;
 }
 
 void	BitcoinExchange::getChange(std::ifstream& input) {
@@ -84,7 +85,7 @@ void	BitcoinExchange::getChange(std::ifstream& input) {
 		date.erase(date.size() -1);
 		if (isValidDate(date) && date >= this->_change.begin()->first) {
 			ss >> value;
-			if (ss.fail())
+			if (ss.fail() || !ss.eof())
 				std::cerr << "Error: bad input => " + line << std::endl;
 			else if (isValidValue(value)) {
 				if (this->_change.find(date) != this->_change.end()) {

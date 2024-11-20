@@ -6,7 +6,6 @@ int err(std::string error) {
 }
 
 int main(int ac, char **av) {
-    (void)av;
     std::ifstream   data("data.csv");
     if (ac != 2 || !data)
         return err("Error: could not open file.");
