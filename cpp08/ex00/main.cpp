@@ -14,15 +14,16 @@ int main() {
 	while (!(std::cin >> n)) {
 		if (std::cin.eof())
 			return 0;
-		std::cout << "Error, please tape only a number" << std::endl << std::endl;
+		std::cout << "Error, please tape only a number" << std::endl << "> ";
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-
+	std::cout << std::endl;
     std::vector<int>::iterator it = ::easyFind(numbers, n);
 	if (it == numbers.end())
-		std::cout << "No occurence found" << std::endl;
+		std::cout << "No occurence found";
 	else
-		std::cout << "Occurence found on index " << std::distance(numbers.begin(), it) << std::endl;
+		std::cout << "Occurence found on index " << std::distance(numbers.begin(), it);
+	std::cout << std::endl;
     return 0;
 }

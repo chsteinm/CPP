@@ -1,8 +1,8 @@
 NAME = MutantStack
 CC = c++
-FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
+FLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98 -g3
 BUILD_DIR = .build
-SRCS = main MutantStack
+SRCS = main
 CPPFILES = $(addsuffix .cpp, $(SRCS))
 OBJS = $(addprefix $(BUILD_DIR)/,$(CPPFILES:.cpp=.o))
 

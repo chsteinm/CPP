@@ -3,7 +3,7 @@
 int	main() {
 	srand(time(NULL));
 
-	//positive numbers test
+	std::cout << "Positive numbers test :" << std::endl;
 	{
 		Span sp;
 
@@ -19,7 +19,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	//negative numbers test 
+	std::cout << "Negative numbers test :" << std::endl;
 	{
 		Span sp;
 
@@ -35,7 +35,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	//negative and positive numbers test 
+	std::cout << "Negative and positive numbers test :" << std::endl;
 	{
 		Span sp;
 
@@ -51,7 +51,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	//max reach exception test
+	std::cout << "Max reach exception test :" << std::endl;
 	{
 		Span sp(2);
 
@@ -68,7 +68,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 	
-	//not enought numbers exception test
+	std::cout << "Not enought numbers exception test :" << std::endl;
 	{
 		Span sp(2);
 
@@ -83,7 +83,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 	
-	//10 000 numbers test
+	std::cout << "10 000 numbers test :" << std::endl;
 	{
 		Span sp;
 		sp.addNumber(42);
@@ -97,7 +97,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 
-	//100 000 numbers test
+	std::cout << "100 000 numbers test :" << std::endl;
 	{
 		Span sp(100000);
 		sp.addNumber(42);
@@ -111,7 +111,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 	
-	//canonic form tests
+	std::cout << "Canonic form tests :" << std::endl;
 	{
 		Span sp(3);
 		sp.addMaxNumbers();
