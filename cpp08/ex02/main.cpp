@@ -20,8 +20,8 @@ int main()
         --it;
         while (it != ite)
         {
-        std::cout << *it << std::endl;
-        ++it;
+            std::cout << *it << std::endl;
+            ++it;
         }
         std::stack<int> s(mstack);
         std::cout << "Elements in s in reverse order : ";
@@ -40,6 +40,31 @@ int main()
             scpy.pop();
         }
         std::cout << std::endl;
+
+        std::cout << "const_iterator test :" << std::endl;
+        MutantStack<int>::const_iterator cit = mstack.begin();
+        MutantStack<int>::const_iterator cite = mstack.end();
+        while (cit != cite)
+        {
+            std::cout << *cit << std::endl;
+            ++cit;
+        }
+        std::cout << "reverse_iterator test :" << std::endl;
+        MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+        MutantStack<int>::reverse_iterator rite = mstack.rend();
+        while (rit != rite)
+        {
+            std::cout << *rit << std::endl;
+            ++rit;
+        }
+        std::cout << "const_reverse_iterator test :" << std::endl;
+        MutantStack<int>::const_reverse_iterator crit = mstack.crbegin();
+        MutantStack<int>::const_reverse_iterator crite = mstack.crend();
+        while (crit != crite)
+        {
+            std::cout << *crit << std::endl;
+            ++crit;
+        }
     }
     std::cout << std::endl;
     {
@@ -61,8 +86,8 @@ int main()
         --it;
         while (it != ite)
         {
-        std::cout << *it << std::endl;
-        ++it;
+            std::cout << *it << std::endl;
+            ++it;
         }
     }
     return 0;
