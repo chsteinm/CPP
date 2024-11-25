@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 #include <algorithm>
 #include <limits>
 
 template<typename T>
-std::vector<int>::iterator	easyFind(T& a, int n) {
+typename T::iterator	easyFind(T& a, int n) {
 	return std::find(a.begin(), a.end(), n);
 }
 
