@@ -1,0 +1,7 @@
+- recursive pair + swap
+- binary shearch insertion sort :
+	- separer grand petit \ main pend + impaire + qui rentre pas dans une paire 
+	- commencer par les index de la suite de jacob s'il y en a (a partir de 3)
+	- revenir sur ceux qu'on a passer (ex: le 2 si on est aller au 3)
+	- finir par l'impaire s'il y en a 
+	- redescendre en recursive

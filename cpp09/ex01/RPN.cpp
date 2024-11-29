@@ -27,8 +27,6 @@ int error(std::string err) {
 int	RPN::calculator(char *args) {
 	
 	std::istringstream iss(args);
-	int n;
-	char op;
 	char c;
 
 	while (iss >> std::skipws >> c) {
@@ -36,7 +34,7 @@ int	RPN::calculator(char *args) {
 			this->_stack.push(c - 48);
 		}
 		else {
-			if (this->_stack.size() < 2)
+			if (this->_stack.size() != 2)
 				return error("Error: n");
 			int b = this->_stack.top();
 			this->_stack.pop();
@@ -55,7 +53,7 @@ int	RPN::calculator(char *args) {
 		}
 	}
 	
-	if (this->_stack.size())
+	if (this->_stack.size() == 1)
 		std::cout << this->_stack.top() << std::endl;
 	else
 		return error("Error");
