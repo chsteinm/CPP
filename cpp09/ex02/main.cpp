@@ -1,13 +1,14 @@
 #include "PmergeMe.hpp"
 
-int err(std::string error) {
-    std::cerr << error << std::endl;
-    return 1;
-}
-
 int main(int ac, char **av) {
-    if (ac < 2)
-        return err("Error: please enter numbers");
-    PmergeMe PmergeMe;
-    return PmergeMe.calculator(av[1]);
+    PmergeMe pmergeMe;
+    try {
+        pmergeMe.parse(ac, av);
+    }
+    catch (const std::runtime_error &e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        return 1;
+    }
+
+    return 0;
 }

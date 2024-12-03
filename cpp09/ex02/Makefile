@@ -1,6 +1,6 @@
 NAME = PmergeMe
 CC = c++
-FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
+FLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98 -g3
 BUILD_DIR = .build
 SRCS = main PmergeMe
 CPPFILES = $(addsuffix .cpp, $(SRCS))

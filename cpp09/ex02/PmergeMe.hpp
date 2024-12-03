@@ -2,14 +2,17 @@
 #define PMERGEME_HPP
 
 #include <iostream>
-#include <stack>
-#include <string>
-#include <fstream>
+#include <vector>
+#include <deque>
+#include <stdexcept>
 #include <sstream>
+#include <ctime>
 
 class PmergeMe {
 private :
-	std::stack<int> _stack;
+	std::vector<int> _vec;
+	std::deque<int> _deq;
+	time_t	_start;
 
 public :
 	PmergeMe();
@@ -17,7 +20,7 @@ public :
 	~PmergeMe();
 	PmergeMe&	operator=(const PmergeMe& src);
 
-	int	calculator(char *args);
+	void	parse(int ac, char **av);
 };
 
 #endif

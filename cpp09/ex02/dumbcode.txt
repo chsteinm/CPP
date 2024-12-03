@@ -1,3 +1,12 @@
+
+- parsing :
+	- check error (que des entiers positifs en parametre)
+	- mettre les entier dans un vecteur et dans un deque
+
+- afficher premiere ligne
+
+- lancer le compteur pour le vecteur 
+
 - recursive pair + swap
 - binary shearch insertion sort :
 	- separer grand petit \ main pend + impaire + qui rentre pas dans une paire 
@@ -5,3 +14,9 @@
 	- revenir sur ceux qu'on a passer (ex: le 2 si on est aller au 3)
 	- finir par l'impaire s'il y en a 
 	- redescendre en recursive
+
+- afficher la deuxieme + troisieme lignes
+
+- remettre compteur a zero pour le deque
+- refaire l'algo
+- affichier la 4e ligne 
