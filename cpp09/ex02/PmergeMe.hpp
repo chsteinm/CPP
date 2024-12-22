@@ -10,9 +10,10 @@
 
 class PmergeMe {
 private :
-	std::vector<int> _vec;
-	std::deque<int> _deq;
-	time_t	_start;
+	std::vector<int>	_vec;
+	std::deque<int>		_deq;
+	clock_t			_start;
+	clock_t			_end;
 
 public :
 	PmergeMe();
@@ -21,6 +22,7 @@ public :
 	PmergeMe&	operator=(const PmergeMe& src);
 
 	void	parse(int ac, char **av);
+	void	vecSort();
 };
 
 #endif

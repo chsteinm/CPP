@@ -26,21 +26,29 @@ void	affVec(std::vector<int> &vec) {
 }
 
 void	PmergeMe::parse(int ac, char **av) {
-	if (ac < 3) {
+	if (ac < 3)
 		throw std::runtime_error("Please enter at least 2 integers");
-		return ;
-	}
 	int n;
 	for (int i = 1; av[i]; i++) {
 		std::istringstream ss(av[i]);
 		ss >> n;
-		if (ss.fail() || !ss.eof() || n < 0) {
+		if (ss.fail() || !ss.eof() || n < 0)
 			throw std::runtime_error("Please enter only integers betwen 0 and MAX_INT");
-			return ;
-		}
 		this->_vec.push_back(n);
+		this->_deq.push_back(n);
 	}
 	std::cout << "Before: ";
 	affVec(this->_vec);
 	std::cout << std::endl;
+}
+
+
+
+
+void	PmergeMe::vecSort() {
+	this->_start = clock();
+
+	this->_end = clock();
+	double cpu_time_used = ((double) (this->_end - this->_start)) / CLOCKS_PER_SEC;
+	std::cout << "After: "; affVec(this->_vec); std::cout << std::endl;
 }
