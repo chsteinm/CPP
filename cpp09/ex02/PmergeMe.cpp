@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include "PmergeMe.tpp"
 
 PmergeMe::PmergeMe() {
 	// std::cout << "Default PmergeMe constuctor called" << std::endl;
@@ -19,12 +20,6 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe& src) {
 	return *this;
 }
 
-void	affVec(std::vector<int> &vec) {
-	std::vector<int>::iterator it = vec.begin();
-	while (it != vec.end())
-		std::cout << *it++ << " ";
-}
-
 void	PmergeMe::parse(int ac, char **av) {
 	if (ac < 3)
 		throw std::runtime_error("Please enter at least 2 integers");
@@ -34,21 +29,20 @@ void	PmergeMe::parse(int ac, char **av) {
 		ss >> n;
 		if (ss.fail() || !ss.eof() || n < 0)
 			throw std::runtime_error("Please enter only integers betwen 0 and MAX_INT");
+		if (std::find(_vec.begin(), _vec.end(), n) != _vec.end())
+			throw std::runtime_error("Please enter only differents integers");
 		this->_vec.push_back(n);
 		this->_deq.push_back(n);
 	}
 	std::cout << "Before: ";
-	affVec(this->_vec);
-	std::cout << std::endl;
+	affContainer(this->_vec);
 }
-
-
-
 
 void	PmergeMe::vecSort() {
 	this->_start = clock();
-
+	mergeInsertionSort(this->_vec);
 	this->_end = clock();
-	double cpu_time_used = ((double) (this->_end - this->_start)) / CLOCKS_PER_SEC;
-	std::cout << "After: "; affVec(this->_vec); std::cout << std::endl;
+	double cpu_time_used = (1000.0 * (this->_end - this->_start)) / CLOCKS_PER_SEC;
+	std::cout << "After: "; affContainer(this->_vec);
+	std::cout << "Time to process a range of 3000 elements with std::vector : " << cpu_time_used << " ms" << std::endl;
 }

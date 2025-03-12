@@ -1,13 +1,9 @@
-mergeInsertRec(vec) {
-	if 
+MakePairAndSwap(recLvl) {
+	if (this->vec.size() / recLvl >= 2)
 }
 
-
-
-
-3 2 1 6 5 4
-
-23 16 45
-
-2316 45
-
+mergeInsertRec(vec, recLvl) {
+	if (MakePairAndSwap(recLvl + 1))
+		mergeInsertRec(vec, recLvL + 1);
+	
+}
