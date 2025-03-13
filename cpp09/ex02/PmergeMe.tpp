@@ -32,7 +32,8 @@ void	swapPairs(Container& numbers, int pairLevel) {
 }
 
 template <typename Container>
-void	movePairsInPend(Container& main, Container& pend, int pairLevel, int mSize) {
+void	movePairsInPend(Container& main, Container& pend, int pairLevel) {
+//void	movePairsInPend(Container& main, Container& pend, int pairLevel, int mSize) {
 	int jump = pow(2, pairLevel);
 	// typename Container::iterator it = main.begin();
 	// for (int i = 2; i <= mSize / jump; i += 2) {
@@ -40,12 +41,23 @@ void	movePairsInPend(Container& main, Container& pend, int pairLevel, int mSize)
 	// }
 	typename Container::iterator it = main.begin() + jump * 2;
 	while (std::distance(it, main.end()) >= jump) {
-		pend.insert(pend.end(), it, jump);
+		pend.insert(pend.end(), it, it + jump);
 		it = main.erase(it, it + jump);
 		if (std::distance(it, main.end()) < jump)
 			break;
 		it += jump;
-	}	
+	}
+
+	std::cout << "\n-- end of movePairs level " << pairLevel << " :\n"; 
+	affContainer(pend);
+	affContainer(main);
+}
+
+template <typename Container>
+void	insertPairs(Container& main, Container& pend, int pairLevel, int nSize) {
+	int jump = pow(2, pairLevel);
+	typename Container::iterator pendIt = pend.begin() + jump - 1;
+	
 }
 
 template <typename Container>
@@ -53,13 +65,13 @@ void	PmergeMe::mergeInsertionSort(Container& numbers) {
 	int nSize = numbers.size();
 	int pairLevel = -1;
 	while (++pairLevel == 0 || nSize / pairLevel >= pow(2, pairLevel)) {
-		// if (pairLevel)
-			// std::cout << "numbers.size() / pairLevel = " << nSize / pairLevel << '\n';
 		swapPairs(numbers, pairLevel);
-		// affContainer(numbers);
+		std::cout << "end of swapPairs in Level  " << pairLevel << " :\n";
+		affContainer(numbers);
 	}
 	Container pend;
 	while (--pairLevel >= 0) {
-		movePairsInPend(numbers, pend, pairLevel, nSize);
+		movePairsInPend(numbers, pend, pairLevel);
+		insertPairs(numbers, pend, pairLevel, nSize);
 	}
 }
