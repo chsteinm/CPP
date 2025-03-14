@@ -10,6 +10,10 @@
 #include <cmath>
 #include <algorithm>
 
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 class PmergeMe {
 	private :
 		std::vector<int>	_vec;

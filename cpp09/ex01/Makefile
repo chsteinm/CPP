@@ -27,10 +27,8 @@ fclean: clean
 re: fclean
 	@make --no-print-directory
 
-run: all
-	./$(NAME) input.txt
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re
 
 .gitignore: Makefile
 	@echo '.build' > .gitignore

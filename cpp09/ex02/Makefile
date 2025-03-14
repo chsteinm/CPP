@@ -5,6 +5,7 @@ BUILD_DIR = .build
 SRCS = main PmergeMe
 CPPFILES = $(addsuffix .cpp, $(SRCS))
 OBJS = $(addprefix $(BUILD_DIR)/,$(CPPFILES:.cpp=.o))
+DEBUG = -D DEBUG=1
 
 all: $(NAME)
 
@@ -27,10 +28,10 @@ fclean: clean
 re: fclean
 	@make --no-print-directory
 
-run: all
-	./$(NAME) input.txt
+debug: FLAGS += $(DEBUG)
+debug: clean all
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re debug
 
 .gitignore: Makefile
 	@echo '.build' > .gitignore
