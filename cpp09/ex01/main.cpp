@@ -5,8 +5,7 @@ int err(std::string error) {
     return 1;
 }
 
-int main(int ac, char **av) {
-    PRENDRE EN CHARGE SI YA 1 + 1 2 + - PAR EXEMPLE
+int main(int ac, char **av) {\
     if (ac != 2)
         return err("Error: please enter 1 arg");
     RPN rpn;

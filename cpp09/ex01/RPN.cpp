@@ -34,8 +34,8 @@ int	RPN::calculator(char *args) {
 			this->_stack.push(c - 48);
 		}
 		else {
-			if (this->_stack.size() != 2)
-				return error("Error: n");
+			if (this->_stack.size() < 2)
+				return error("Error: too many op");
 			int b = this->_stack.top();
 			this->_stack.pop();
 			int a = this->_stack.top();
@@ -48,7 +48,7 @@ int	RPN::calculator(char *args) {
                 case '/': if (!b)
 							return error("Error: division by zero impossible");
 						  this->_stack.push(a / b); break;
-                default: return error("Error: op");
+                default: return error("Error: op is only : +-*/");
             }
 		}
 	}
@@ -56,6 +56,6 @@ int	RPN::calculator(char *args) {
 	if (this->_stack.size() == 1)
 		std::cout << this->_stack.top() << std::endl;
 	else
-		return error("Error");
+		return error("Error: too many numbers");
 	return 0;
 }
