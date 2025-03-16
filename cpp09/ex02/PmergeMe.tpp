@@ -52,40 +52,88 @@ int genJacobsthalNumber(int n) {
 }
 
 template <typename Container>
+std::vector<std::pair<typename Container::iterator, typename Container::iterator> > mirroring(Container& main, Container& pend, int jump) {
+    std::vector<std::pair<typename Container::iterator, typename Container::iterator> > result;
+	if (main.size() / jump < 3)
+		return result;
+    typename Container::iterator itMain = main.begin() + 2 * jump;
+    typename Container::iterator itPend = pend.begin();
+	
+    for (unsigned int i = jump; i <= std::min((unsigned int)main.size() - jump, (unsigned int)pend.size() - jump); i += jump) {
+        result.push_back(std::make_pair(itMain + i - jump, itPend + i - jump));
+		if (DEBUG)
+			std::cout << "(" << *(itMain + i - 1) << ", " << *(itPend + i - 1) << ")";
+	}
+	if (DEBUG)
+		std::cout << std::endl;
+    return result;
+}
+
+template <typename Container>
+void	binaryInsert(Container& main, typename Container::iterator& it, int jump, int end) {
+	int start = 0;
+	int middle;
+	int cmpN = 0;
+	while (start < end) {
+		middle = start + (end - start) / 2;
+		if (*(it + jump - 1) < main[middle * jump + jump - 1]) {
+                end = middle;
+            }
+		else {
+			start = middle + 1;
+		}
+		cmpN++;
+	}
+	if (DEBUG)
+		std::cout << "Number of cmp: " << cmpN << "\n"; 
+	main.insert(main.begin() + start * jump, it, it + jump);
+}
+
+template <typename Container>
 void	insertPairs(Container& main, Container& pend, int pairLevel, int nSize) {
 	(void)nSize;
 	int jump = pow(2, pairLevel);
-	// int jacobsthalDiff;
-	// int currJacobsthal = genJacobsthalNumber(jacobsthalIndex);
-	// int prevJacobsthal = genJacobsthalNumber(jacobsthalIndex - 1);
-	int pSize = pend.size();
-	int numberOfInsert = 0;
-	typename Container::iterator it = pend.begin() + jump - 1;
+	std::vector<std::pair<typename Container::iterator, typename Container::iterator> > mirror = mirroring(main, pend, jump);
+	typename Container::iterator it = pend.begin();
+	// int pSize = pend.size();
+	int end;
+	int currJacobsthal;
+	int jacobsthalDiff;
+	int numberOfInsert = 1;
 	int jacobsthalIndex = 1;
-	while (pSize / jump + 1 >= genJacobsthalNumber(++jacobsthalIndex)) {
-		// jacobsthalDiff = currJacobsthal - prevJacobsthal;
-		it += (genJacobsthalNumber(jacobsthalIndex) - numberOfInsert) * jump;
-		while () {
-
+	int prevJacobsthal = genJacobsthalNumber(jacobsthalIndex);
+	while (++jacobsthalIndex) {
+		currJacobsthal = genJacobsthalNumber(jacobsthalIndex);
+		jacobsthalDiff = currJacobsthal - prevJacobsthal;
+		if (currJacobsthal > mirror.size() + 1)
+			break;
+		for (int i = 0; i < jacobsthalDiff; i++) {
+			end = std::distance(main.begin(), mirror[currJacobsthal - 1].first) / jump + 1;
+			binaryIsert(main, mirror[currJacobsthal - 1].second, jump, end)
+			
 		}
+		prevJacobsthal = currJacobsthal;
 	}
 	while (it != pend.end()) {
-        int start = 0;
-        int end = main.size() / jump;
+        // int start = 0;
+        end = main.size() / jump;
+        // int end = numberOfInsert++ * 2 / jump + 2;
+		binaryInsert(main, it, jump, end);
+		it = pend.erase(it, it + jump);
 
-        while (start < end) {
-            int middle = start + (end - start) / 2;
-            if (*(it + jump - 1) < main[middle * jump + jump - 1]) {
-                end = middle;
-            }
-			else {
-                start = middle + 1;
-            }
-        }
+        // while (start < end) {
+        //     int middle = start + (end - start) / 2;
+        //     if (*(it + jump - 1) < main[middle * jump + jump - 1]) {
+        //         end = middle;
+        //     }
+		// 	else {
+        //         start = middle + 1;
+        //     }
+        // }
 
-        main.insert(main.begin() + start * jump, it, it + jump);
+        // main.insert(main.begin() + start * jump, it, it + jump);
 
-        it = pend.erase(it, it + jump);
+        // it = pend.erase(it, it + jump);
     }
 }
 
