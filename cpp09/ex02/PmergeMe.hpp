@@ -32,6 +32,7 @@ class PmergeMe {
 
 		void	parse(int ac, char **av);
 		void	vecSort();
+		void	dequeSort();
 };
 
 #endif

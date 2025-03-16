@@ -21,8 +21,7 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe& src) {
 }
 
 void	PmergeMe::parse(int ac, char **av) {
-	if (ac < 3)
-		throw std::runtime_error("Please enter at least 2 integers");
+	(void)ac;
 	int n;
 	for (int i = 1; av[i]; i++) {
 		std::istringstream ss(av[i]);
@@ -45,4 +44,13 @@ void	PmergeMe::vecSort() {
 	double cpu_time_used = (1000.0 * (this->_end - this->_start)) / CLOCKS_PER_SEC;
 	std::cout << "After: "; affContainer(this->_vec);
 	std::cout << "Time to process a range of 3000 elements with std::vector : " << cpu_time_used << " ms" << std::endl;
+}
+
+void	PmergeMe::dequeSort() {
+	this->_start = clock();
+	mergeInsertionSort(this->_deq);
+	this->_end = clock();
+	double cpu_time_used = (1000.0 * (this->_end - this->_start)) / CLOCKS_PER_SEC;
+	std::cout << "After: "; affContainer(this->_deq);
+	std::cout << "Time to process a range of 3000 elements with std::deque : " << cpu_time_used << " ms" << std::endl;
 }

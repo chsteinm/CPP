@@ -11,6 +11,7 @@ int main(int ac, char **av) {
     }
     try {
         pmergeMe.vecSort();
+        pmergeMe.dequeSort();
     }
     catch (const std::runtime_error &e) {
         std::cout << "Error: " << e.what() << std::endl;
