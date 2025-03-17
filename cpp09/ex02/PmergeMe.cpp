@@ -38,6 +38,7 @@ void	PmergeMe::parse(int ac, char **av) {
 }
 
 void	PmergeMe::vecSort() {
+	this->_cmp = 0;
 	this->_start = clock();
 	mergeInsertionSort(this->_vec);
 	this->_end = clock();
@@ -47,10 +48,12 @@ void	PmergeMe::vecSort() {
 }
 
 void	PmergeMe::dequeSort() {
+	this->_cmp = 0;
 	this->_start = clock();
 	mergeInsertionSort(this->_deq);
 	this->_end = clock();
 	double cpu_time_used = (1000.0 * (this->_end - this->_start)) / CLOCKS_PER_SEC;
-	std::cout << "After: "; affContainer(this->_deq);
 	std::cout << "Time to process a range of 3000 elements with std::deque : " << cpu_time_used << " ms" << std::endl;
+	std::cout << "Number of comparisons: " << this->_cmp << std::endl;
+	printSortedOrNot(this->_deq);
 }

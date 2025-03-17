@@ -1,0 +1,144 @@
+Before: 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
+
+end of swapPairs in Level 0 :
+15 16 13 14 11 12 9 10 7 8 5 6 3 4 1 2 0 
+
+end of swapPairs in Level 1 :
+13 14 15 16 9 10 11 12 5 6 7 8 1 2 3 4 0 
+
+end of swapPairs in Level 2 :
+9 10 11 12 13 14 15 16 1 2 3 4 5 6 7 8 0 
+
+-- end of movePairs level 2 :
+1 2 3 4 
+9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+
+Number of cmp for insering 4: 2 in the first :3 elements of:
+9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+end of insertPairs in Level 2 :
+1 2 3 4 9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+-- end of movePairs level 1 :
+9 10 13 14 5 6 
+1 2 3 4 11 12 15 16 7 8 0 
+(11, 9)(15, 13)
+
+Number of cmp for insering 14: 2 in the first :4 elements of:
+1 2 3 4 11 12 15 16 7 8 0 
+
+Number of cmp for insering 10: 2 in the first :3 elements of:
+1 2 3 4 11 12 13 14 15 16 7 8 0 
+
+Number of cmp for insering 6: 3 in the first :7 elements of:
+1 2 3 4 9 10 11 12 13 14 15 16 7 8 0 
+
+end of insertPairs in Level 1 :
+1 2 3 4 5 6 9 10 11 12 13 14 15 16 7 8 0 
+
+-- end of movePairs level 0 :
+3 5 9 11 13 15 7 0 
+1 2 4 6 10 12 14 16 8 
+(4, 3)(6, 5)(10, 9)(12, 11)(14, 13)(16, 15)(8, 7)
+
+Number of cmp for insering 5: 2 in the first :4 elements of:
+1 2 4 6 10 12 14 16 8 
+
+Number of cmp for insering 3: 2 in the first :3 elements of:
+1 2 4 5 6 10 12 14 16 8 
+
+Number of cmp for insering 11: 3 in the first :8 elements of:
+1 2 3 4 5 6 10 12 14 16 8 
+
+Number of cmp for insering 9: 3 in the first :7 elements of:
+1 2 3 4 5 6 10 11 12 14 16 8 
+
+Number of cmp for insering 13: 4 in the first :11 elements of:
+1 2 3 4 5 6 9 10 11 12 14 16 8 
+
+Number of cmp for insering 15: 3 in the first :14 elements of:
+1 2 3 4 5 6 9 10 11 12 13 14 16 8 
+
+Number of cmp for insering 7: 4 in the first :15 elements of:
+1 2 3 4 5 6 9 10 11 12 13 14 16 8 15 
+
+Number of cmp for insering 0: 5 in the first :16 elements of:
+1 2 3 4 5 6 7 9 10 11 12 13 14 16 8 15 
+
+end of insertPairs in Level 0 :
+0 1 2 3 4 5 6 7 9 10 11 12 13 14 16 8 15 
+After: 0 1 2 3 4 5 6 7 9 10 11 12 13 14 16 8 15 
+Number of comparisons: 49
+Time to process a range of 3000 elements with std::vector : 0.105 ms
+
+end of swapPairs in Level 0 :
+15 16 13 14 11 12 9 10 7 8 5 6 3 4 1 2 0 
+
+end of swapPairs in Level 1 :
+13 14 15 16 9 10 11 12 5 6 7 8 1 2 3 4 0 
+
+end of swapPairs in Level 2 :
+9 10 11 12 13 14 15 16 1 2 3 4 5 6 7 8 0 
+
+-- end of movePairs level 2 :
+1 2 3 4 
+9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+
+Number of cmp for insering 4: 2 in the first :3 elements of:
+9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+end of insertPairs in Level 2 :
+1 2 3 4 9 10 11 12 13 14 15 16 5 6 7 8 0 
+
+-- end of movePairs level 1 :
+9 10 13 14 5 6 
+1 2 3 4 11 12 15 16 7 8 0 
+(11, 9)(15, 13)
+
+Number of cmp for insering 14: 2 in the first :4 elements of:
+1 2 3 4 11 12 15 16 7 8 0 
+
+Number of cmp for insering 10: 2 in the first :3 elements of:
+1 2 3 4 11 12 13 14 15 16 7 8 0 
+
+Number of cmp for insering 6: 3 in the first :7 elements of:
+1 2 3 4 9 10 11 12 13 14 15 16 7 8 0 
+
+end of insertPairs in Level 1 :
+1 2 3 4 5 6 9 10 11 12 13 14 15 16 7 8 0 
+
+-- end of movePairs level 0 :
+3 5 9 11 13 15 7 0 
+1 2 4 6 10 12 14 16 8 
+(4, 3)(6, 5)(10, 9)(12, 11)(14, 13)(16, 15)(8, 7)
+
+Number of cmp for insering 5: 2 in the first :4 elements of:
+1 2 4 6 10 12 14 16 8 
+
+Number of cmp for insering 3: 2 in the first :3 elements of:
+1 2 4 5 6 10 12 14 16 8 
+
+Number of cmp for insering 11: 3 in the first :8 elements of:
+1 2 3 4 5 6 10 12 14 16 8 
+
+Number of cmp for insering 9: 3 in the first :7 elements of:
+1 2 3 4 5 6 10 11 12 14 16 8 
+
+Number of cmp for insering 13: 4 in the first :11 elements of:
+1 2 3 4 5 6 9 10 11 12 14 16 8 
+
+Number of cmp for insering 15: 3 in the first :14 elements of:
+1 2 3 4 5 6 9 10 11 12 13 14 16 8 
+
+Number of cmp for insering 7: 4 in the first :15 elements of:
+1 2 3 4 5 6 9 10 11 12 13 14 16 8 15 
+
+Number of cmp for insering 0: 5 in the first :16 elements of:
+1 2 3 4 5 6 7 9 10 11 12 13 14 16 8 15 
+
+end of insertPairs in Level 0 :
+0 1 2 3 4 5 6 7 9 10 11 12 13 14 16 8 15 
+Number of comparisons: 49
+Time to process a range of 3000 elements with std::deque : 0.117 ms

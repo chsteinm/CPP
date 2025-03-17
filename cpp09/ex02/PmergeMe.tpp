@@ -8,6 +8,19 @@ void	affContainer(Container& numbers) {
 	std::cout << std::endl;
 }
 
+template <typename Container>
+void	printSortedOrNot(Container &numbers) {
+	typename Container::iterator it = numbers.begin();
+	int prev = *it;
+	while (++it != numbers.end() && numbers.size() > 1) {
+		if (prev > *it) {
+			std::cout << "\nThe container is not sorted :(" << std::endl;
+			return;
+		}
+		prev = *it;
+	}
+	std::cout << "The container is properly sorted. =D\n" << std::endl;
+}
 
 template <typename IT>
 void	swapAllNumbersInPairs(IT it, int jump) {
@@ -18,12 +31,13 @@ void	swapAllNumbersInPairs(IT it, int jump) {
 }
 
 template <typename Container>
-void	swapPairs(Container& numbers, int pairLevel) {
+void	swapPairs(Container& numbers, int pairLevel, std::size_t& cmp) {
 	int jump = pow(2, pairLevel);
 	typename Container::iterator it = numbers.begin();
 	while (std::distance(it, numbers.end()) >= jump * 2) {
 		if (*(it + jump - 1) > *(it + (jump * 2) - 1))
 			swapAllNumbersInPairs(it, jump);
+		cmp++;
 		it += jump * 2;
 	}
 }
@@ -56,13 +70,13 @@ std::vector<std::pair<int, int> > mirroring(Container& main, Container& pend, in
     std::vector<std::pair<int, int> > result;
 	if (main.size() / jump < 3)
 		return result;
-    typename Container::iterator itMain = main.begin() + 2 * jump;
+    typename Container::iterator itEnd = main.begin() + 2 * jump;
     typename Container::iterator itPend = pend.begin();
 	
     for (unsigned int i = jump; i <= std::min((unsigned int)main.size() - jump, (unsigned int)pend.size() - jump); i += jump) {
-        result.push_back(std::make_pair(*(itMain + i - jump), *(itPend + i - jump)));
+        result.push_back(std::make_pair(*(itEnd + i - jump), *(itPend + i - jump)));
 		if (DEBUG)
-			std::cout << "(" << *(itMain + i - jump) << ", " << *(itPend + i - jump) << ")";
+			std::cout << "(" << *(itEnd + i - jump) << ", " << *(itPend + i - jump) << ")";
 	}
 	if (DEBUG)
 		std::cout << std::endl;
@@ -70,11 +84,11 @@ std::vector<std::pair<int, int> > mirroring(Container& main, Container& pend, in
 }
 
 template <typename Container>
-void	binaryInsert(Container& main, typename Container::iterator& it, int jump, int end) {
+void	binaryInsert(Container& main, typename Container::iterator& it, int jump, int end, std::size_t& cmp) {
 	int start = 0;
 	int middle;
-	int cmpN = 0;
 	int endCpy = end;
+	int cmpN = 0;
 	while (start < end) {
 		middle = start + (end - start) / 2;
 		if (*(it + jump - 1) < main[middle * jump + jump - 1]) {
@@ -84,6 +98,7 @@ void	binaryInsert(Container& main, typename Container::iterator& it, int jump, i
 			start = middle + 1;
 		}
 		cmpN++;
+		cmp++;
 	}
 	if (DEBUG) {
 		std::cout << "\nNumber of cmp for insering " << *(it + jump - 1) << ": " << cmpN << " in the first :"
@@ -94,17 +109,14 @@ void	binaryInsert(Container& main, typename Container::iterator& it, int jump, i
 }
 
 template <typename Container>
-void	insertPairs(Container& main, Container& pend, int pairLevel, int nSize) {
-	(void)nSize;
+void	insertPairs(Container& main, Container& pend, int pairLevel, std::size_t& cmp) {
 	int jump = pow(2, pairLevel);
 	std::vector<std::pair<int, int> > mirror = mirroring(main, pend, jump);
 	typename Container::iterator it;
-	typename Container::iterator itMain;
-	// int pSize = pend.size();
+	typename Container::iterator itEnd;
 	int end;
 	int currJacobsthal;
 	int jacobsthalDiff;
-	// int numberOfInsert = 1;
 	int jacobsthalIndex = 1;
 	int prevJacobsthal = genJacobsthalNumber(jacobsthalIndex);
 	while (++jacobsthalIndex) {
@@ -113,35 +125,26 @@ void	insertPairs(Container& main, Container& pend, int pairLevel, int nSize) {
 		if (currJacobsthal > static_cast<int>(mirror.size() + 1))
 			break;
 		for (int i = 0; i < jacobsthalDiff; i++) {
-			itMain = std::find(main.begin(), main.end(), mirror[currJacobsthal - 2 - i].first);
-			end = std::distance(main.begin(), itMain) / jump + 1;
+			itEnd = std::find(main.begin(), main.end(), mirror[currJacobsthal - 2 - i].first);
+			end = std::distance(main.begin(), itEnd) / jump;
 			it = std::find(pend.begin(), pend.end(), mirror[currJacobsthal - 2 - i].second);
-			binaryInsert(main, it, jump, end);
+			binaryInsert(main, it, jump, end, cmp);
 			pend.erase(it, it + jump);
 		}
 		prevJacobsthal = currJacobsthal;
 	}
+	for (int i = prevJacobsthal + 1; i < static_cast<int>(mirror.size()); i++) {
+		itEnd = std::find(main.begin(), main.end(), mirror[i - 2].first);
+		end = std::distance(main.begin(), itEnd) / jump;
+		it = std::find(pend.begin(), pend.end(), mirror[i - 2].second);
+		binaryInsert(main, it, jump, end, cmp);
+		pend.erase(it, it + jump);
+	}
 	it = pend.begin();
 	while (it != pend.end()) {
-        // int start = 0;
         end = main.size() / jump;
-        // int end = numberOfInsert++ * 2 / jump + 2;
-		binaryInsert(main, it, jump, end);
+		binaryInsert(main, it, jump, end, cmp);
 		it = pend.erase(it, it + jump);
-
-        // while (start < end) {
-        //     int middle = start + (end - start) / 2;
-        //     if (*(it + jump - 1) < main[middle * jump + jump - 1]) {
-        //         end = middle;
-        //     }
-		// 	else {
-        //         start = middle + 1;
-        //     }
-        // }
-
-        // main.insert(main.begin() + start * jump, it, it + jump);
-
-        // it = pend.erase(it, it + jump);
     }
 }
 
@@ -149,8 +152,8 @@ template <typename Container>
 void	PmergeMe::mergeInsertionSort(Container& numbers) {
 	int nSize = numbers.size();
 	int pairLevel = -1;
-	while (++pairLevel == 0 || nSize / pairLevel >= pow(2, pairLevel)) {
-		swapPairs(numbers, pairLevel);
+	while (++pairLevel == 0|| nSize / 2 >= pow(2, pairLevel)) {
+		swapPairs(numbers, pairLevel, this->_cmp);
 		if (DEBUG) {
 			std::cout << "\nend of swapPairs in Level " << pairLevel << " :\n";
 			affContainer(numbers);
@@ -159,7 +162,7 @@ void	PmergeMe::mergeInsertionSort(Container& numbers) {
 	Container pend;
 	while (--pairLevel >= 0) {
 		movePairsInPend(numbers, pend, pairLevel);
-		insertPairs(numbers, pend, pairLevel, nSize);
+		insertPairs(numbers, pend, pairLevel, this->_cmp);
 		if (DEBUG) {
 			std::cout << "\nend of insertPairs in Level " << pairLevel << " :\n";
 			affContainer(numbers);

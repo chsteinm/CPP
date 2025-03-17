@@ -20,6 +20,7 @@ class PmergeMe {
 		std::deque<int>		_deq;
 		clock_t			_start;
 		clock_t			_end;
+		std::size_t		_cmp;
 
 		template <typename Container>
 		void	mergeInsertionSort(Container& numbers);
