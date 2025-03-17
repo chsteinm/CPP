@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+#THIS TESTER HAS BEEN MODIFIED BY CHRSTEIN FOR GENERATE A SEQUENCE OF UNIQUE NUMBERS
+
 # Define color codes for output formatting
 RED='\e[31m'
 GREEN='\e[32m'
